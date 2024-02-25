@@ -264,3 +264,238 @@
 //	return 0;
 //}
 //注：忘记释放不再使用的动态开辟的空间会造成内存泄漏，切记动态开辟的空间一定要释放，并且正确的释放
+
+
+
+
+//四、经典笔试题
+//1.运行Tese函数会有什么样的结果
+//void GetMemory(char* p)
+//{
+//	p = (char*)malloc(100);
+//}
+//void Test()
+//{
+//	char* str = NULL;
+//	GetMemory(str);
+//	strcpy(str, "hello world"); //str是空指针，解引用时会崩溃
+//	printf(str);
+//}
+//int main()
+//{
+//	Test();
+//	return 0;
+//}
+
+
+//改法1：
+//void GetMemory(char** p)
+//{
+//	*p = (char*)malloc(100);
+//}
+//void Test()
+//{
+//	char* str = NULL;
+//	GetMemory(&str);
+//	//str存放的就是动态开辟的100字节的地址
+//	strcpy(str, "hello world"); 
+//	printf(str);
+//	free(str);
+//	str = NULL;
+//}
+//int main()
+//{
+//	Test();
+//	return 0;
+//}
+
+
+//改法2：
+//char* GetMemory(char* p)
+//{
+//	p = (char*)malloc(100);
+//	return p;
+//}
+//void Test()
+//{
+//	char* str = NULL;
+//	str = GetMemory(str);
+//	//str存放的就是动态开辟的100字节的地址
+//	strcpy(str, "hello world");
+//	printf(str);
+//	free(str);
+//	str = NULL;
+//}
+//int main()
+//{
+//	Test();
+//	return 0;
+//}
+
+
+//2.运行Test函数会有什么样的结果
+//char* GetMemory()
+//{
+//	char p[] = "hello world";
+//	return p; //返回之后，空间就消失了
+//}
+//void Test()
+//{
+//	char* str = NULL; 
+//	str = GetMemory(); //str接收的就是野指针
+//	printf(str);
+//}
+//int main()
+//{
+//	Test();
+//	return 0;
+//}
+
+
+//int* test()
+//{
+//	//返回栈空间地址的问题
+//	int a = 10;
+//	return &a;
+//}
+//int main()
+//{
+//	int* p = test();
+//	printf("%d\n", *p);
+//	return 0;
+//}
+
+
+//3.运行Test函数会有什么样的结果
+//void GetMemory(char** p, int num)
+//{
+//	*p = (char*)malloc(num);
+//}
+//void Test()
+//{
+//	char* str = NULL;
+//	GetMemory(&str, 100);
+//	strcpy(str, "hello");
+//	printf(str);
+//	free(str);
+//	str = NULL;
+//}
+//int main()
+//{
+//	Test();
+//	return 0;
+//}
+
+
+//4.运行Test函数会有什么样的结果
+//void Test()
+//{
+//	char* str = (char*)malloc(100);
+//	strcpy(str, "hello");
+//	free(str);
+//	if (str != NULL)
+//	{
+//		strcpy(str, "world"); //str是野指针，除非free后将str置空
+//		printf(str);
+//	}
+//}
+//int main()
+//{
+//	Test();
+//	return 0;
+//}
+
+
+
+
+//五、柔性数组
+//C99中，结构中的最后一个元素允许是未知大小的数组，这就叫做柔性数组成员
+//特点：
+//①：结构中的柔性数组成员前面必须至少有一个其他成员
+//②：sizeof返回的这种结构大小不包括柔性数组的内存
+//③：包含柔性数组成员的结构用mallo()函数进行内存的动态分配，并且分配内存的应该大于结构的大小，以适应柔性数组的预期大小
+//struct S {
+//	int n;
+//	int arr[];//柔性数组成员
+//};
+//int main()
+//{
+//	int sz = sizeof(struct S);
+//	printf("%d\n", sz);
+//
+//	//柔性数组的使用
+//	struct S* ps = (struct S*)malloc(sizeof(struct S) + 40);//额外的空间是给arr数组使用的
+//	if (ps == NULL)
+//	{
+//		return 1;
+//	}
+//	ps->n = 100;
+//	int i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		ps->arr[i] = i;
+//	}
+//	for (i = 0; i < 10; i++)
+//	{
+//		printf("%d ", ps->arr[i]);
+//	}
+//	struct S* ptr = (struct S*)realloc(ps, sizeof(struct S) + 80);
+//	if (ptr != NULL)
+//	{
+//		ps = ptr;
+//		ptr = NULL;
+//	}
+//
+//	free(ps);
+//	ps = NULL;
+//
+//	return 0;
+//}
+
+
+//struct S {
+//	int n;
+//	int* arr;
+//};
+//int main()
+//{
+//	struct S* ps = (struct S*)malloc(sizeof(struct S));
+//	if (ps == NULL)
+//	{
+//		return 1;
+//	}
+//	ps->n = 100;
+//	ps->arr = (int*)malloc(40);
+//	if (ps->arr == NULL)
+//	{
+//		printf("%s\n", strerror(errno));
+//	}
+//
+//	//使用
+//	int i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		ps->arr[i] = i;
+//	}
+//	for (i = 0; i < 10; i++)
+//	{
+//		printf("%d ", ps->arr[i]);
+//	}
+//	//扩容
+//	int* ptr = (int*)realloc(ps->arr, 80);
+//	if (ptr == NULL)
+//	{
+//		return 1;
+//	}
+//	//....
+//
+//	//释放
+//	free(ps->arr);
+//	free(ps);
+//	ps = NULL;
+//
+//	return 0;
+//}
+//柔性数组的优势
+//①：方便内存释放
+//②：这样有利于访问速度
