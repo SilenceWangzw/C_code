@@ -19,20 +19,33 @@
 
 //int main()
 //{
-//	const char* p = "abcdef"; //把字符串首字符a的地址赋值给了p，加const是为了限制常量字符串不被修改
-//	printf("%s\n", p); //p只是提供一个地址，打印到直到遇到\0
+//	//本质上是把"hello bit"这个字符串的首字符的地址存储在了ps中
+//	char* ps = "hello bit";
+//
+//	printf("%c\n", *ps);//h
+//
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	//这里是把"hello bit"这个字符串放到了arr数组中
+//	char arr[] = "hello bit";
+//	printf("%s\n", arr); //arr代表的是数组起始位置的地址
 //	return 0;
 //}
 
 
 //一道笔试题
+//常量字符串不能修改，所以加上const，防止误操作
 //int main()
 //{
-//	const char* p1 = "abcdef"; //放在内存里的只读数据区，不需要存在多份
-//	const char* p2 = "abcdef";
+//	const char* p1 = "hello bit"; //放在内存里的只读数据区，不需要存在多份
+//	const char* p2 = "hello bit";
 //
-//	char arr1[] = "abcdef";//两个独立的数组，内存中的空间不同
-//	char arr2[] = "abcdef";
+//	char arr1[] = "hello bit";//两个独立的数组，内存中的空间不同
+//	char arr2[] = "hello bit";
 //
 //	if (p1 == p2)
 //	{
@@ -74,6 +87,21 @@
 
 //int main()
 //{
+//	int a = 10;
+//	int b = 20;
+//	int c = 30;
+//	int* arr[3] = { &a,&b,&c };
+//	int i = 0;
+//	for (i = 0; i < 3; i++)
+//	{
+//		printf("%d ", *(arr[i])); //不推荐这种用法
+//	}
+//	return 0;
+//}
+
+
+//int main()
+//{
 //	int arr1[] = { 1,2,3,4,5 };
 //	int arr2[] = { 2,3,4,5,6 };
 //	int arr3[] = { 3,4,5,6,7 };
@@ -84,8 +112,11 @@
 //	{
 //		for (int j = 0; j < 5; j++)
 //		{
-//			//*(p+i) <===> p[i]
-//			printf("%d ", *(*(parr + i) + j));
+//			//*(parr+i) <===> parr[i]
+//			
+//			//printf("%d ", *(*(parr + i) + j)); //写法1
+//			//printf("%d ", *(parr[i] + j)); //写法2
+//			printf("%d ", parr[i][j]); //写法3
 //		}
 //		printf("\n");
 //	}
@@ -129,7 +160,9 @@
 //int main()
 //{
 //	int arr[10] = { 0 };
-//	int(*p)[10] = &arr;
+//  
+//	//p就是一个数组指针，存放的是数组的地址，指向int[10]类型的数组
+//	int(*p)[10] = &arr; //害怕p和[]先结合，所以加上()
 //
 //	return 0;
 //}
@@ -146,6 +179,14 @@
 
 //int main()
 //{
+//	double* d[5];
+//	double* (*pd)[5] = &d; //pd是一个数组指针
+//	return 0;
+//}
+
+
+//int main()
+//{
 //	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
 //	int(*p)[10] = &arr;
 //	
@@ -156,6 +197,7 @@
 //	{
 //		printf("%d ", *(*p + i));//p是指向数组的，*p其实就相当于数组名，数组名又是首元素的地址，所以*p本质上是数组首元素的地址
 //	}
+//
 //	return 0;
 //}
 
@@ -181,7 +223,7 @@
 //		int j = 0;
 //		for (j = 0; j < c; j++)
 //		{
-//			printf("%d ", *(*(p + i) + j));
+//			printf("%d ", *(*(p + i) + j)); //找到第i行，下标为j的元素
 //		}
 //		printf("\n");
 //	}
@@ -190,7 +232,7 @@
 //{
 //	int arr[3][5] = { 1,2,3,4,5,2,3,4,5,6,3,4,5,6,7 };
 //	print1(arr, 3, 5);
-//	print2(arr, 3, 5);
+//	print2(arr, 3, 5); //arr数组名，表示数组首元素的地址,二维数组首元素是第一行，第一行是个int arr[5]的数组
 //
 //	return 0;
 //}
@@ -198,8 +240,52 @@
 
 
 
+//四、数组参数和指针参数
+//1.一维数组传参
+//void test(int arr[]) //ok? -- 正确
+//{}
+//void test(int arr[10]) //ok? -- 正确
+//{}
+//void test(int *arr) //ok? -- 正确
+//{}
+//void test2(int *arr[20]) //ok? -- 正确
+//{}
+//void test2(int **arr) //ok? -- 正确 -- arr2的首元素是int*类型，用二级指针接收
+//{}
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int* arr2[20] = { 0 }; //存放int*的数组
+//	test(arr);
+//	test2(arr2);
+//
+//	return 0;
+//}
 
-//四、数组传参和指针传参
+
+//2.二维数组传参
+//void test(int arr[3][5]) // ok? -- 正确
+//{}
+//void test(int arr[][]) //ok? -- 错误，不能省略列
+//{}
+//void test(int arr[][5]) //ok? -- 正确
+//{}
+//void test(int* arr) //ok? -- 错误，第一行是个数组的地址
+//{}
+//void test(int *arr[5]) //ok? -- 错误，数组的地址不能用指针数组来接收
+//{}
+//void test(int(*arr)[5]) //ok? -- 正确
+//{}
+//void test(int **arr) //ok? -- 错误，传过去的是数组的地址，匹配不上
+//{}
+//int main()
+//{
+//	int arr[3][5] = { 0 };
+//	test(arr);//二维数组名传的是第一行的地址
+//	return 0;
+//}
+
+
 
 
 //五、函数指针
