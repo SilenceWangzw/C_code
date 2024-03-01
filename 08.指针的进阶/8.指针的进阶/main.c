@@ -286,18 +286,409 @@
 //}
 
 
+//3.一级指针传参
+//void print(int* p, int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", *(p + i));
+//	}
+//}
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9 };
+//	int* p = arr;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//
+//	//一级指针p，传给函数
+//	print(p, sz);
+//
+//	return 0;
+//}
 
 
-//五、函数指针
+//4.二级指针传参
+//void test(int** p2)
+//{
+//	**p2 = 20;
+//}
+//int main()
+//{
+//	int a = 10;
+//	int* pa = &a; //pa是一级指针
+//	int** ppa = &pa; //ppa是二级指针
+//
+//	//把二级指针进行传参
+//	test(ppa);
+//	printf("%d\n", a);
+//	return 0;
+//}
 
 
-//六、函数指针数组
 
 
-//七、指向函数指针数组的指针
+//五、函数指针 -- 指向函数的指针 -- 存放函数地址的指针
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int main()
+//{
+//	int a = 10;
+//	int* pa = &a;
+//
+//	char ch = 'w';
+//	char* pc = &ch;
+//
+//	int arr[10] = { 0 };
+//	int(*parr)[10] = &arr; //parr是指向数组的指针，存放的是数组的地址
+//
+//	//函数指针 -- 存放函数地址的指针
+//	//&函数名 -- 取到的就是函数的地址
+//	//pf就是一个函数指针变量
+//	int (*pf)(int, int) = &Add;
+//
+//	return 0;
+//}
+
+
+//void test(char* str)
+//{}
+//int main()
+//{
+//	void(*pt)(char*) = &test;
+//
+//
+//	return 0;
+//}
+
+
+//通过函数指针调用
+//写法1：
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int main()
+//{
+//	int(*pf)(int, int) = &Add;
+//	int ret = (*pf)(3, 5); //通过*pf找到Add函数
+//	printf("%d\n", ret);
+//
+//	return 0;
+//}
+
+
+//写法2：
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int main()
+//{
+//	int(*pf)(int, int) = Add; //Add <===> pf
+//	int ret = pf(3, 5);
+//	printf("%d\n", ret);
+//
+//	return 0;
+//}
+
+
+//阅读两段有趣的代码
+//1.
+//int main()
+//{
+//	(*(void(*)())0)();
+//	//调用0地址处的函数
+//	//该函数无参，返回类型是void
+//	//①：void(*)() -- 函数指针类型
+//	//②：(void(*)())0 -- 对0进行强制类型转换，被解释为一个函数的地址
+//	//③：*(void(*)())0 -- 对0地址进行了解引用操作
+//	//④：(*(void(*)())0)() -- 调用0地址处的函数
+//
+//	return 0;
+//}
+
+
+//2.
+//int main()
+//{
+//	void(*signal(int, void(*)(int)))(int);
+//	//①：signal和()先结合，说明signal是函数名
+//	//②：signal函数的第一个参数的类型是int，第二个参数的类型是函数指针，该函数指针指向一个参数为int，返回类型是void的函数
+//	//③：signal函数的返回类型也是也是一个函数指针，该函数指针指向一个参数为int，返回类型是void的函数
+//	//signal是一个函数的声明
+//
+//	//简化:
+//	void(*)(int)signal(int, void(*)(int)); //语法错误
+//
+//	typedef void(*pfun_t)(int); //对void(*)(int)的函数指针类型重命名为pfun_t
+//	pfun_t signal(int, pfun_t);
+//
+//	return 0;
+//}
+
+
+
+
+//六、函数指针数组 -- 存放函数指针的数组
+//整型指针 int*
+//整型指针数组 int *arr[5];
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int Sub(int x, int y)
+//{
+//	return x - y;
+//}
+//int main()
+//{
+//
+//	int(*pf1)(int, int) = &Add;
+//	int(*pf2)(int, int) = &Sub;
+//
+//	int (*pfArr[2])(int, int) = { pf1,pf2 };//pfArr就是函数指针数组
+//
+//	return 0;
+//}
+
+
+//应用
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int Sub(int x, int y)
+//{
+//	return x - y;
+//}
+//int Mul(int x, int y)
+//{
+//	return x * y;
+//}
+//int Div(int x, int y)
+//{
+//	return x / y;
+//}
+//void menu()
+//{
+//	printf("***********************************\n");
+//	printf("*******1. add      2. sub   *******\n");
+//	printf("*******3. mul      4. div   *******\n");
+//	printf("*******       0.exit        *******\n");
+//	printf("***********************************\n");
+//}
+//int main()
+//{
+//	//计算器 - 计算整型变量的加、减、乘、除
+//	int input = 0;
+//	do {
+//		menu();
+//		int ret = 0;
+//		printf("请选择:> ");
+//		int x = 0;
+//		int y = 0;
+//		scanf("%d", &input);
+//
+//		switch (input)
+//		{
+//		case 1:
+//			printf("请输入两个操作数:> ");
+//			scanf("%d%d", &x, &y);
+//			ret = Add(x, y);
+//			printf("ret = %d\n", ret);
+//			break;
+//		case 2:
+//			printf("请输入两个操作数:> ");
+//			scanf("%d%d", &x, &y);
+//			ret = Sub(x, y);
+//			printf("ret = %d\n", ret);
+//			break;
+//		case 3:
+//			printf("请输入两个操作数:> ");
+//			scanf("%d%d", &x, &y);
+//			ret = Mul(x, y);
+//			printf("ret = %d\n", ret);
+//			break;
+//		case 4:
+//			printf("请输入两个操作数:> ");
+//			scanf("%d%d", &x, &y);
+//			ret = Div(x, y);
+//			printf("ret = %d\n", ret);
+//			break;
+//		case 0:
+//			printf("退出程序\n");
+//			break;
+//		default:
+//			printf("选择错误，请重新输入\n");
+//			break;
+//		}
+//	} while (input);
+//
+//	return 0;
+//}
+
+
+//修改版
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int Sub(int x, int y)
+//{
+//	return x - y;
+//}
+//int Mul(int x, int y)
+//{
+//	return x * y;
+//}
+//int Div(int x, int y)
+//{
+//	return x / y;
+//}
+//void menu()
+//{
+//	printf("***********************************\n");
+//	printf("*******1. add      2. sub   *******\n");
+//	printf("*******3. mul      4. div   *******\n");
+//	printf("*******       0.exit        *******\n");
+//	printf("***********************************\n");
+//}
+//int main()
+//{
+//	//计算器 - 计算整型变量的加、减、乘、除
+//	int input = 0;
+//	do {
+//		menu();
+//		//pfArr就是函数指针数组
+//		int(*pfArr[5])(int, int) = { NULL,Add,Sub,Mul,Div };
+//		int ret = 0;
+//		int x = 0;
+//		int y = 0;
+//		printf("请选择:> ");
+//		scanf("%d", &input);
+//		if (input >= 1 && input <= 4) {
+//			printf("请输入两个操作数:> ");
+//			scanf("%d%d", &x, &y);
+//
+//			ret = (pfArr[input])(x, y); //传参调用这个函数
+//			printf("%d\n", ret);
+//		}
+//		else if(input == 0)
+//		{
+//			printf("退出程序\n");
+//			break;
+//		}
+//		else {
+//			printf("选择错误\n");
+//		}
+//	} while (input);
+//
+//	return 0;
+//}
+
+
+
+
+//七、指向函数指针数组的指针(了解)
+//int main()
+//{
+//	int(*p)(int, int);//函数指针
+//	int(*p2[4])(int, int);//函数指针的数组
+//	int(*(*p3)[4])(int, int) = &p2;//取出的是函数指针数组的地址,p3就是一个指向函数指针数组的指针
+//	
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int arr[10];
+//	//数组元素类型 -- int
+//	//arr数组的类型是 int[10]
+//
+//	return 0;
+//}
+
+
 
 
 //八、回调函数
+//通过函数指针调用的函数
+int Add(int x, int y)
+{
+	return x + y;
+}
+int Sub(int x, int y)
+{
+	return x - y;
+}
+int Mul(int x, int y)
+{
+	return x * y;
+}
+int Div(int x, int y)
+{
+	return x / y;
+}
+void menu()
+{
+	printf("***********************************\n");
+	printf("*******1. add      2. sub   *******\n");
+	printf("*******3. mul      4. div   *******\n");
+	printf("*******       0.exit        *******\n");
+	printf("***********************************\n");
+}
+int Calc(int (*pf)(int, int))
+{
+	int x = 0;
+	int y = 0;
+	printf("请输入两个操作数:> ");
+	scanf("%d%d", &x, &y);
+	return pf(x, y); //通过函数指针调用，称为回调函数
+}
+int main()
+{
+	//计算器 - 计算整型变量的加、减、乘、除
+	int input = 0;
+	do {
+		menu();
+		int ret = 0;
+		printf("请选择:> ");
+		scanf("%d", &input);
+
+		switch (input)
+		{
+		case 1:
+			ret = Calc(Add);
+			printf("ret = %d\n", ret);
+			break;
+		case 2:
+			ret = Calc(Sub);
+			printf("ret = %d\n", ret);
+			break;
+		case 3:
+			ret = Calc(Mul);
+			printf("ret = %d\n", ret);
+			break;
+		case 4:
+			ret = Calc(Div);
+			printf("ret = %d\n", ret);
+			break;
+		case 0:
+			printf("退出程序\n");
+			break;
+		default:
+			printf("选择错误，请重新输入\n");
+			break;
+		}
+	} while (input);
+
+	return 0;
+}
+
 
 
 //九、指针和数组面试题的解析
