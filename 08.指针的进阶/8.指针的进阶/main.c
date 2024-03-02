@@ -617,75 +617,163 @@
 
 //八、回调函数
 //通过函数指针调用的函数
-int Add(int x, int y)
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int Sub(int x, int y)
+//{
+//	return x - y;
+//}
+//int Mul(int x, int y)
+//{
+//	return x * y;
+//}
+//int Div(int x, int y)
+//{
+//	return x / y;
+//}
+//void menu()
+//{
+//	printf("***********************************\n");
+//	printf("*******1. add      2. sub   *******\n");
+//	printf("*******3. mul      4. div   *******\n");
+//	printf("*******       0.exit        *******\n");
+//	printf("***********************************\n");
+//}
+//int Calc(int (*pf)(int, int))
+//{
+//	int x = 0;
+//	int y = 0;
+//	printf("请输入两个操作数:> ");
+//	scanf("%d%d", &x, &y);
+//	return pf(x, y); //通过函数指针调用，称为回调函数
+//}
+//int main()
+//{
+//	//计算器 - 计算整型变量的加、减、乘、除
+//	int input = 0;
+//	do {
+//		menu();
+//		int ret = 0;
+//		printf("请选择:> ");
+//		scanf("%d", &input);
+//
+//		switch (input)
+//		{
+//		case 1:
+//			ret = Calc(Add);
+//			printf("ret = %d\n", ret);
+//			break;
+//		case 2:
+//			ret = Calc(Sub);
+//			printf("ret = %d\n", ret);
+//			break;
+//		case 3:
+//			ret = Calc(Mul);
+//			printf("ret = %d\n", ret);
+//			break;
+//		case 4:
+//			ret = Calc(Div);
+//			printf("ret = %d\n", ret);
+//			break;
+//		case 0:
+//			printf("退出程序\n");
+//			break;
+//		default:
+//			printf("选择错误，请重新输入\n");
+//			break;
+//		}
+//	} while (input);
+//
+//	return 0;
+//}
+
+
+//qsort函数 -- 快速排序
+//冒泡排序
+//void Bubble_sort(int arr[10], int sz)
+//{
+//	//冒泡排序的趟数
+//	for (int i = 0; i < sz - 1; i++)
+//	{
+//		//一趟冒泡排序
+//		for (int j = 0; j < sz - 1 - i; j++) //第一趟有9对要比较，第二趟8对要比较
+//		{
+//			if (arr[j] > arr[j + 1]) {
+//				int tmp = arr[j];
+//				arr[j] = arr[j + 1];
+//				arr[j + 1] = tmp;
+//			}
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[10] = { 9,8,7,6,5,4,3,2,1,0 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	Bubble_sort(arr, sz);
+//	
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	return 0;
+//}
+
+
+//qsort -- 快速排序 -- 不挑类型
+//qsort(void *base, size_t num, size_t size, int(*compare)(const void* , const void*))
+//base中存放的是待排序数组中第一个对象的地址
+//num代表排序数据元素的个数
+//size代表一个元素有多大
+//compare指向的函数是用来比较待排序数据中的两个元素的函数，返回大于0表示第一个元素大于第二个元素
+#include<stdlib.h>
+//int cmp_int(const void* e1, const void* e2)
+//{
+//	return *(int*)e1 - *(int*)e2;
+//}
+//int main()
+//{
+//	int arr[10] = { 9,8,7,6,5,4,3,2,1,0 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);\
+//	//排序
+//	qsort(arr, sz, sizeof(arr[0]), cmp_int);
+//
+//	//打印
+//	for (int i = 0; i < sz; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//
+//	return 0;
+//}
+
+
+#include<stdlib.h>
+#include<string.h>
+struct Stu {
+	char name[20];
+	int age;
+};
+int sort_by_age(const void* e1, const void* e2)
 {
-	return x + y;
+	return ((struct Stu*)e1)->age - ((struct Stu*)e2)->age;
 }
-int Sub(int x, int y)
+int sort_by_name(const void* e1, const void* e2)
 {
-	return x - y;
-}
-int Mul(int x, int y)
-{
-	return x * y;
-}
-int Div(int x, int y)
-{
-	return x / y;
-}
-void menu()
-{
-	printf("***********************************\n");
-	printf("*******1. add      2. sub   *******\n");
-	printf("*******3. mul      4. div   *******\n");
-	printf("*******       0.exit        *******\n");
-	printf("***********************************\n");
-}
-int Calc(int (*pf)(int, int))
-{
-	int x = 0;
-	int y = 0;
-	printf("请输入两个操作数:> ");
-	scanf("%d%d", &x, &y);
-	return pf(x, y); //通过函数指针调用，称为回调函数
+	return strcmp(((struct Stu*)e1)->name, ((struct Stu*)e2)->name);
 }
 int main()
 {
-	//计算器 - 计算整型变量的加、减、乘、除
-	int input = 0;
-	do {
-		menu();
-		int ret = 0;
-		printf("请选择:> ");
-		scanf("%d", &input);
+	struct Stu s[] = { {"zhangsan",30},{"lisi",34},{"wangwu",20} };
+	int sz = sizeof(s) / sizeof(s[0]);
+	//按照年龄来排序
+	qsort(s, sz, sizeof(s[0]), sort_by_age);
 
-		switch (input)
-		{
-		case 1:
-			ret = Calc(Add);
-			printf("ret = %d\n", ret);
-			break;
-		case 2:
-			ret = Calc(Sub);
-			printf("ret = %d\n", ret);
-			break;
-		case 3:
-			ret = Calc(Mul);
-			printf("ret = %d\n", ret);
-			break;
-		case 4:
-			ret = Calc(Div);
-			printf("ret = %d\n", ret);
-			break;
-		case 0:
-			printf("退出程序\n");
-			break;
-		default:
-			printf("选择错误，请重新输入\n");
-			break;
-		}
-	} while (input);
-
+	//按照名字来排序
+	qsort(s, sz, sizeof(s[0]), sort_by_name);
 	return 0;
 }
 
