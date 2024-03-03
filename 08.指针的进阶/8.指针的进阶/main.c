@@ -732,7 +732,7 @@
 #include<stdlib.h>
 //int cmp_int(const void* e1, const void* e2)
 //{
-//	return *(int*)e1 - *(int*)e2;
+//	return *(int*)e1 - *(int*)e2; //反过来则是降序
 //}
 //int main()
 //{
@@ -751,32 +751,82 @@
 //}
 
 
-#include<stdlib.h>
-#include<string.h>
-struct Stu {
-	char name[20];
-	int age;
-};
-int sort_by_age(const void* e1, const void* e2)
+//#include<stdlib.h>
+//#include<string.h>
+//struct Stu {
+//	char name[20];
+//	int age;
+//};
+//int sort_by_age(const void* e1, const void* e2)
+//{
+//	return ((struct Stu*)e1)->age - ((struct Stu*)e2)->age;
+//}
+//int sort_by_name(const void* e1, const void* e2)
+//{
+//	return strcmp(((struct Stu*)e1)->name, ((struct Stu*)e2)->name);
+//}
+//int main()
+//{
+//	struct Stu s[] = { {"zhangsan",30},{"lisi",34},{"wangwu",20} };
+//	int sz = sizeof(s) / sizeof(s[0]);
+//	//按照年龄来排序
+//	qsort(s, sz, sizeof(s[0]), sort_by_age);
+//
+//	//按照名字来排序
+//	qsort(s, sz, sizeof(s[0]), sort_by_name);
+//	return 0;
+//}
+
+
+//模仿qsort实现一个冒泡排序的通用算法
+void Swap(char* buf1, char* buf2, int width)
 {
-	return ((struct Stu*)e1)->age - ((struct Stu*)e2)->age;
+	int i = 0;
+	for (i = 0; i < width; i++)
+	{
+		char tmp = *buf1;
+		*buf1 = *buf2;
+		*buf2 = tmp;
+		buf1++;
+		buf2++;
+	}
 }
-int sort_by_name(const void* e1, const void* e2)
+int cmp_int(const void* e1, const void* e2)
 {
-	return strcmp(((struct Stu*)e1)->name, ((struct Stu*)e2)->name);
+	return *(int*)e1 - *(int*)e2; //反过来则是降序
+}
+void bubble_sort(void* base, int sz, int width, int(*cmp)(const void* e1, const void* e2))
+{
+	int i = 0;
+	//趟数
+	for (i = 0; i < sz - 1; i++)
+	{
+		//一趟的排序
+		int j = 0;
+		for (j = 0; j < sz - 1 - i; j++)
+		{
+			//两个元素比较 -- 升序
+			if (cmp((char*)base + j * width, (char*)base + (j + 1) * width) > 0)
+			{
+				//交换
+				Swap((char*)base + j * width, (char*)base + (j + 1) * width, width);
+				
+			}
+		}
+	}
 }
 int main()
 {
-	struct Stu s[] = { {"zhangsan",30},{"lisi",34},{"wangwu",20} };
-	int sz = sizeof(s) / sizeof(s[0]);
-	//按照年龄来排序
-	qsort(s, sz, sizeof(s[0]), sort_by_age);
+	int arr[] = { 1,3,5,7,9,2,4,6,8,0 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	bubble_sort(arr, sz, 4, cmp_int);
 
-	//按照名字来排序
-	qsort(s, sz, sizeof(s[0]), sort_by_name);
+	for (int i = 0; i < sz; i++)
+	{
+		printf("%d ", arr[i]);
+	}
 	return 0;
 }
-
 
 
 //九、指针和数组面试题的解析
