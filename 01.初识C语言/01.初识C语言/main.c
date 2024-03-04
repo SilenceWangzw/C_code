@@ -3,12 +3,12 @@
 
 //一、第一个程序
 //1.写出主函数(main函数) --- C语言是从主函数的第一行开始执行的
-//写个代码在屏幕上打印：比特
+//写个代码在屏幕上打印：Hello World
 //printf -- 库函数 -- 在屏幕上打印信息的
 //printf的使用，引用头文件 stdio.h
 //int main()
 //{
-//	printf("比特\n");
+//	printf("Hello World\n");
 //	return 0;
 //}
 //编译+链接+运行代码
@@ -39,7 +39,7 @@
 //每种类型的大小是多少
 //int main()
 //{
-//	//sizeof() -- 关键字 -- 操作符 -- 计算类型或者变量所占空间大小
+//	//sizeof() -- 关键字 -- 操作符 -- 计算类型或变量所占空间大小
 //	printf("char size is %d\n", sizeof(char));//1bite
 //	printf("short size is %d\n", sizeof(short));//2bite
 //	printf("int size is %d\n", sizeof(int));//4bite
@@ -49,6 +49,7 @@
 //	printf("double size is %d\n", sizeof(double));//8bite
 //	return 0;
 //}
+
 
 
 
@@ -75,13 +76,13 @@
 //int a = 100;//全局变量 -- {}外部定义的
 //int main()
 //{
-//	//局部变量 -- {}内部定义的
+//	int a = 10;//局部变量 -- {}内部定义的
 //	//当局部变量和全局变量名字冲突的情况下，局部优先
 //	//不建议把全局变量和局部变量的名字写成一样的
-//	int a = 10;
 //	printf("%d\n", a);
 //	return 0;
 //}
+
 
 
 //例:写一个代码求两个整数的和
@@ -111,7 +112,6 @@
 //变量的生命周期指的是变量的创建和销毁之间的时间段
 //局部变量的生命周期：进入局部范围生命周期开始，出局部范围生命周期结束
 //全局变量的生命周期：程序的生命周期
-
 
 
 //常量
@@ -159,10 +159,10 @@
 //int main()
 //{
 //	//字符数组 - 数组是一组相同类型的元素
-//	//字符串在结尾的位置隐藏了一个\0字符
-//	// \0是字符串的结束标志
-//	char arr1[] = "abcdef"; //abcdef\0
-//	char arr2[] = { 'a','b','c','d','e','f' }; //abcdef
+////字符串在结尾的位置隐藏了一个\0字符
+//// \0是字符串的结束标志
+//	char arr1[] = "abcdef";//abcdef\0
+//	char arr2[] = { 'a','b','c','d','e','f' };//abcdef
 //	printf("%s\n", arr1);
 //	printf("%s\n", arr2);
 //	return 0;
