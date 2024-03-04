@@ -1,11 +1,11 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 
-//一、第一个程序
-//1.写出主函数(main函数) --- C语言是从主函数的第一行开始执行的
+//一、第一个C程序
+//1.写出主函数(main函数) -- C语言是从主函数的第一行开始执行的
 //写个代码在屏幕上打印：Hello World
 //printf -- 库函数 -- 在屏幕上打印信息的
-//printf的使用，引用头文件 stdio.h
+//printf的使用，引用头文件stdio.h
 //int main()
 //{
 //	printf("Hello World\n");
@@ -15,23 +15,29 @@
 
 
 
+
 //二、数据类型
 //计算机语言 - 写程序 - 解决生活中的问题
 //必须有能力来描述生活中的问题
-//购物商城 - 上架商品，价格 - 15.6元 - 小数
-//年龄 - 50 - 整数
+//购物商城 -- 上架商品，价格 -- 15.6元 -- 小数
+//年龄 -- 50 -- 整数
 //int main()
 //{
 //	//字符类型
 //	char ch = 'a';
+//
 //	//整型
 //	int age = 20;
+//
 //	//短整型
 //	short num = 10;
-//	//浮点型(单精度浮点型)
-//	float = weight = 55.5;
+//
+//	//浮点型（单精度浮点型）
+//	float weight = 55.5;
+//
 //	//浮点型(双精度浮点型)
 //	double d = 0.0;
+//
 //	return 0;
 //}
 
@@ -40,13 +46,13 @@
 //int main()
 //{
 //	//sizeof() -- 关键字 -- 操作符 -- 计算类型或变量所占空间大小
-//	printf("char size is %d\n", sizeof(char));//1bite
-//	printf("short size is %d\n", sizeof(short));//2bite
-//	printf("int size is %d\n", sizeof(int));//4bite
-//	printf("long size is %d\n", sizeof(long));//4bite
-//	printf("long long size is %d\n", sizeof(long long));//8bite
-//	printf("float size is %d\n", sizeof(float));//4bite
-//	printf("double size is %d\n", sizeof(double));//8bite
+//	printf("%d\n", sizeof(char));//1
+//	printf("%d\n", sizeof(short));//2
+//	printf("%d\n", sizeof(int)); //4
+//	printf("%d\n", sizeof(long));//4
+//	printf("%d\n", sizeof(long long));//8
+//	printf("%d\n", sizeof(float));//4
+//	printf("%d\n", sizeof(double));//8
 //	return 0;
 //}
 
@@ -59,7 +65,7 @@
 //C语言描述 -- 常量（不能改变的量） -- 变量（能被改变的量）
 //int main()
 //{
-	//创建一个变量
+//	//创建一个变量
 //	int age = 20;
 //	double weight = 75.3;
 //
@@ -72,7 +78,7 @@
 //}
 
 
-//局部变量全局变量
+//局部变量和全局变量
 //int a = 100;//全局变量 -- {}外部定义的
 //int main()
 //{
@@ -84,16 +90,14 @@
 //}
 
 
-
-//例:写一个代码求两个整数的和
+//例：写一个代码求两个整数的和
 //int main()
 //{
 //	int a = 0;
 //	int b = 0;
-//	int sum = 0;
 //	scanf("%d%d", &a, &b);
-//	sum = a + b;
-//	printf("sum = %d\n", sum);
+//	int sum = a + b;
+//	printf("%d\n", sum);
 //	return 0;
 //}
 
@@ -147,7 +151,6 @@
 //	printf("%d\n", FEMALE);//1
 //	printf("%d\n", SECRET);//2
 //
-//
 //	return 0;
 //}
 
@@ -158,9 +161,8 @@
 //字符串就是一串字符 -- 用双引号括起来的一串字符
 //int main()
 //{
-//	//字符数组 - 数组是一组相同类型的元素
-////字符串在结尾的位置隐藏了一个\0字符
-//// \0是字符串的结束标志
+//	//字符数组 -- 数组是一组相同类型的元素
+//	//字符串在结尾的位置隐藏了一个\0字符，\0是字符串的结束标志
 //	char arr1[] = "abcdef";//abcdef\0
 //	char arr2[] = { 'a','b','c','d','e','f' };//abcdef
 //	printf("%s\n", arr1);
@@ -376,6 +378,8 @@
 //	printf("%d\n", max);
 //	return 0;
 //}
+
+
 
 
 //十、常见关键字
