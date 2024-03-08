@@ -211,3 +211,122 @@
 //结论：结构体传参的时候，要传结构体的地址，节约系统开销
 
 
+
+
+//二、位段
+//位段的声明和结构是类似的，有两个不同
+//①：位段的成员必须是int、unsigned int或signed int
+//②：位段的成员名后边有一个冒号和一个数字
+//struct A
+//{
+//	//4个字节 -- 32bit
+//	int _a : 2;//_a成员占2个比特位
+//	int _b : 5;//_b成员占5个比特位
+//	int _c : 10;//_c成员占10个比特位
+//	//再开辟4个字节 -- 32bit
+//	int _d : 30;//_d成员占30个比特位
+//};
+//int main()
+//{
+//	printf("%d\n", sizeof(struct A)); //8bit
+//	return 0;
+//}
+//位段的内存分配
+//①：位段的成员可以是int、unsigned int、signed int或者是char类型
+//②：位段的空间上是按照需要以4个字节或1个字节的方式来开辟的
+//③：位段涉及很多不确定因素，位段是不跨平台的，注重可移植的程序应该避免使用位段
+
+
+//应用
+//struct S
+//{
+//	char a : 3;
+//	char b : 4;
+//	char c : 5;
+//	char d : 4;
+//};
+//int main()
+//{
+//	struct S s = { 0 };
+//	s.a = 10;
+//	s.b = 12;
+//	s.c = 3;
+//	s.d = 4;
+//	return 0;
+//}
+
+
+
+
+//三、枚举
+//枚举顾名思义就是一一列举,把可能的值一一列举
+//声明枚举类型
+//enum Color
+//{
+//	//枚举类型的可能取值，常量，默认增长1
+//	RED,//0  5
+//	GREEN,//1  6
+//	BLUE//2  7
+//};
+//int main()
+//{
+//	//CPP 语法检查更加严格
+//	//enum Color c = 2; //err
+//	//RED = 6;//err，枚举常量不可修改
+//	printf("%d\n", RED);
+//	printf("%d\n", GREEN);
+//	printf("%d\n", BLUE);
+//
+//	return 0;
+//}
+//枚举的优点
+//①：增加代码的可读性和可维护性
+//②：和#define定义的标识符比较枚举有类型检查，更加严谨
+//③：防止了命名污染(封装)
+//④：便于调试
+//⑤：使用方便，一次可以定义多个常量
+
+
+//枚举的应用
+void menu()
+{
+	printf("************************************\n");
+	printf("*********  1.add    2.sub   ********\n");
+	printf("*********  3.mul    4.div   ********\n");
+	printf("*********      0.exit       ********\n");
+}
+enum Option
+{
+	exit,//0
+	add,//1
+	sub,//2
+	mul,//3
+	div//4
+};
+int main()
+{
+	int input = 0;
+	do
+	{
+		menu();
+		printf("请选择:> ");
+		scanf("%d", &input);
+		switch (input)
+		{
+		case add:
+			break;
+		case sub:
+			break;
+		case mul:
+			break;
+		case div:
+			break;
+		case exit:
+			break;
+		default:
+			break;
+		}
+
+	} while (input);
+	return 0;
+}
