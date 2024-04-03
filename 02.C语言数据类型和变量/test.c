@@ -250,6 +250,7 @@
 //{
 //	int a = 0;
 //	a += 10;// 等价于 a = a + 10;
+//	printf("%d\n", a);
 //	return 0;
 //}
 
@@ -304,6 +305,250 @@
 //{
 //	int a = (int)3.14; //将3.14强制转换成int类型，保留整数部分，小数部分丢弃
 //	printf("%d\n", a);
+//
+//	return 0;
+//}
+
+
+
+
+//八、printf和scanf函数
+//1.printf
+//print -- 打印     f -- format -- 格式
+//int main()
+//{
+//	printf("Hello world\n");
+//	printf("abc\ndef");
+//	return 0;
+//}
+
+
+//占位符
+//printf()可以在输出文本中指定占位符
+//所谓占位符，就是这个位置可以用其他值代入
+//%d -- 十进制整数
+//int main()
+//{
+//	printf("There are %d apples\n", 3);
+//	return 0;
+//}
+
+
+// %s -- 代表的是一个字符串
+//int main()
+//{
+//	printf("%s will come tonight\n", "lisi");
+//	printf("%s will come tonight\n", "wangwu");
+//	return 0;
+//}
+
+
+//多个占位符
+//int main()
+//{
+//	printf("%s says it is %d o'clock\n", "lisi", 10);
+//	printf("%s says it is %d o'clock\n", "cuihua", 10);
+//	return 0;
+//}
+//printf()参数与占位符是一一对应的
+
+
+// %c -- 打印字符
+//int main()
+//{
+//	printf("this is %c\n", 'A');
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	printf("%hd\n", 100);
+//	printf("%ho\n", 100);
+//	printf("%x\n", 15);
+//	return 0;
+//}
+
+
+//限定宽度
+//int main()
+//{
+//	printf("%d\n", 123);
+//	printf("%5d\n", 123);// %5d -- 最少输出5位，不够则补空格。默认向右对齐
+//	printf("%5d\n", 123456);//指的是最小宽度，超过就直接打印
+//	printf("%-5d\n", 123);//左对齐
+//	return 0;
+//}
+
+
+// %f和%lf在打印的时候，小数点后默认是打印6位
+//int main()
+//{
+//	printf("%lf\n", 123.45);
+//	printf("%12lf\n", 123.45);
+//	return 0;
+//}
+
+
+//限定正负号
+//int main()
+//{
+//	printf("%d\n", 123);//+123
+//	printf("%d\n", -123);//-123
+//
+//	printf("%+d\n", 123);
+//	printf("%+d\n", -123);
+//	return 0;
+//}
+
+
+//限定小数点位
+//int main()
+//{
+//	printf("%.2lf\n", 123.45); // %.2lf -- 打印两位
+//	printf("%.3lf\n", 123.45);
+//	printf("%.1lf\n", 123.45);
+//	return 0;
+//}
+
+
+//结合使用
+//int main()
+//{
+//	printf("%12.1lf\n", 123.45); //%12.1lf -- 占12位，小数点后保留1位
+//	printf("%*.*lf\n", 12, 1, 123.45);//写法2
+//	return 0;
+//}
+
+
+//输出部分字符串
+//int main()
+//{
+//	printf("%s\n", "abcdef");
+//	printf("%.3s\n", "abcdef");//打印前3个字符
+//	return 0;
+//}
+
+
+//2.scanf
+//int main()
+//{
+//	int score = 0;
+//	printf("请输入成绩:> ");
+//	//& -- 取地址操作符
+//	scanf("%d", &score);//输入操作。scanf函数中，占位符的后面的参数需要的是地址
+//	printf("成绩是:%d\n", score);
+//	return 0;
+//}
+
+
+//输入多组数据
+//scanf处理占位符时，会自动过滤空白字符，包括空格、制表符、换行符等
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	float f1 = 0.0;
+//	float f2 = 0.0;
+//
+//	scanf("%d %d %f %f", &a, &b, &f1, &f2);
+//	printf("%d %d %f %f\n", a, b, f1, f2);
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int x;
+//	float y;
+//
+//	//用户输入  -13.45e12# 0
+//	scanf("%d", &x);//-13
+//	printf("%d\n", x);
+//	scanf("%f", &y);//0.45e12  --  浮点数在内存中可能无法精确保存
+//	printf("%f\n", y);
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	scanf("%d,%d", &a, &b);
+//	printf("%d %d\n", a, b);
+//	return 0;
+//}
+
+
+//scanf的返回值是一个整数，表示成功读取变量个数
+//如果没有读取任何项，或者匹配失败，则返回0
+//如果在读取任何数据之前，发生了读取错误或者遇到读取读取到文件结尾，则返回常量EOF(-1)
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	int c = 0;
+//	int d = 0;
+//	int ret = scanf("%d %d %d %d", &a, &b, &c, &d);
+//	printf("a=%d b=%d c=%d d=%d\n", a, b, c, d);
+//	printf("%d\n", ret);
+//	return 0;
+//}
+
+
+//除了%c以外，都会自动忽略起首的空白字符,%c不忽略空白字符
+//int main()
+//{
+//	char ch = 0;
+//	scanf("%c", &ch);//如果在%c前面加上空格，就会跳过空白字符
+//	printf("xxxx%cyyyy\n", ch);
+//	return 0;
+//}
+
+
+//%s -- 它的规则是，从当前第一个非空白字符开始读起，直到遇到空白字符
+//int main()
+//{
+//	char arr[20] = { 0 };
+//	scanf("%s", arr);//arr是数组名，数组名是地址
+//	printf("%s\n", arr);
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	char arr[5] = { 0 };
+//	scanf("%4s", arr);//打印4个，后面的字符将被丢弃
+//	printf("%s\n", arr);
+//	return 0;
+//}
+
+
+//赋值忽略符
+//只要把*加在任何占位符百分号的后面，该占位符就不会返回值，解析后将被丢弃
+//int main()
+//{
+//	int year = 0;
+//	int month = 0;
+//	int day = 0;
+//	scanf("%d-%d-%d", &year, &month, &day);
+//
+//	printf("%d %d %d\n", year, month, day);
+//
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int year = 0;
+//	int month = 0;
+//	int day = 0;
+//	scanf("%d%*c%d%*c%d", &year, &month, &day);
+//
+//	printf("%d %d %d\n", year, month, day);
 //
 //	return 0;
 //}
