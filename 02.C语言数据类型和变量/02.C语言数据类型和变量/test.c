@@ -8,7 +8,7 @@
 //C语言把类型分为两类
 //1.内置类型（C语言本身就具有的）：字符型、整型、浮点型、布尔类型
 //2.自定义类型（自己创造的）：数组、结构体、枚举、联合体
-
+ 
 
 //布尔类型 -- 用来表示真假
 //使用布尔类型要引用头文件stdbool.h
@@ -52,7 +52,7 @@
 //	int a = 10;
 //	printf("%zd\n", sizeof(int));
 //	printf("%zd\n", sizeof(a));
-//	printf("%zd\n", sizeof a);//里面放的是表达式或变量是，括号可省略，类型不能省略括号
+//	printf("%zd\n", sizeof a);//里面放的是表达式或变量，括号可省略，类型不能省略括号
 //	return 0;
 //}
 
@@ -111,6 +111,7 @@
 //	double weight;//双精度浮点型变量
 //	return 0;
 //}
+
 
 
 //2.变量的初始化
@@ -317,7 +318,7 @@
 //print -- 打印     f -- format -- 格式
 //int main()
 //{
-//	printf("Hello world\n");
+//	printf("Hello World\n");
 //	printf("abc\ndef");
 //	return 0;
 //}
@@ -363,9 +364,9 @@
 
 //int main()
 //{
-//	printf("%hd\n", 100);
-//	printf("%ho\n", 100);
-//	printf("%x\n", 15);
+//	printf("%hd\n", 100); //%hd -- 十进制短整型
+//	printf("%ho\n", 100); //%ho -- 八进制短整型
+//	printf("%x\n", 15); //%x -- 十六进制
 //	return 0;
 //}
 
@@ -405,7 +406,7 @@
 //限定小数点位
 //int main()
 //{
-//	printf("%.2lf\n", 123.45); // %.2lf -- 打印两位
+//	printf("%.2lf\n", 123.45);// %.2lf -- 打印两位
 //	printf("%.3lf\n", 123.45);
 //	printf("%.1lf\n", 123.45);
 //	return 0;

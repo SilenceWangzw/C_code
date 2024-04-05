@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{6a3cce6f-a84b-4171-a152-81fd461b4e9d}</ProjectGuid>
+    <ProjectGuid>{b9a34e48-16b8-4674-a06d-3018800c03d3}</ProjectGuid>
     <RootNamespace>My02C语言数据类型和变量</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
