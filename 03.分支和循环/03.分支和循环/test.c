@@ -1,5 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
 
 //C语言是一门结构化语言，结构指的是顺序结构、选择结构、循环结构
 //一、if语句
@@ -587,5 +589,167 @@
 //		printf("%d ", i);
 //		i++;
 //	} while (i <= 10);
+//	return 0;
+//}
+
+
+
+
+//十、循环的嵌套
+//练习：找出100~200之间的素数，并打印在屏幕上
+//素数是只能被1和它本身整除的
+//int main()
+//{
+//	int i = 0;
+//	for (i = 100; i <= 200; i++)
+//	{
+//		int flag = 1;//假设i是素数
+//		//每一次循环进来都会产生一个数字
+//		//判断这个数字是否是素数
+//		//产生2~i-1之间的数字去试除i
+//		int j = 0;
+//		for (j = 2; j <= i - 1; j++)
+//		{
+//			if (i % j == 0)
+//			{
+//				flag = 0;
+//				break;
+//			}
+//		}
+//		if (flag == 1)
+//		{
+//			printf("%d\n", i);
+//		}
+//	}
+//	return 0;
+//}
+
+
+//优化：偶数不可能是素数
+//int main()
+//{
+//	int i = 0;
+//	for (i = 101; i <= 200; i+=2)
+//	{
+//		int flag = 1;//假设i是素数
+//		//每一次循环进来都会产生一个数字
+//		//判断这个数字是否是素数
+//		//产生2~i-1之间的数字去试除i
+//		int j = 0;
+//		for (j = 2; j <= i - 1; j++)
+//		{
+//			if (i % j == 0)
+//			{
+//				flag = 0;
+//				break;
+//			}
+//		}
+//		if (flag == 1)
+//		{
+//			printf("%d\n", i);
+//		}
+//	}
+//	return 0;
+//}
+
+
+//若 m=a*b，则a和b中至少有一个数字是<=根号m的
+//#include<math.h>
+//int main()
+//{
+//	int i = 0;
+//	for (i = 100; i <= 200; i++)
+//	{
+//		int flag = 1;//假设i是素数
+//		//每一次循环进来都会产生一个数字
+//		//判断这个数字是否是素数
+//		//产生2~i-1之间的数字去试除i
+//		int j = 0;
+//		for (j = 2; j <= sqrt(i); j++)
+//		{
+//			if (i % j == 0)
+//			{
+//				flag = 0;
+//				break;
+//			}
+//		}
+//		if (flag == 1)
+//		{
+//			printf("%d\n", i);
+//		}
+//	}
+//	return 0;
+//}
+
+
+
+
+//十一、goto语句
+//goto语句可以实现在同一个函数内跳转到设计好的标号处
+//int main()
+//{
+//	printf("hehe\n");
+//	if (1)
+//	{
+//		goto end;
+//	}
+//	printf("haha\n");
+//
+//end:
+//	printf("end\n");
+//	return 0;
+//}
+
+
+//int main()
+//{
+//again:
+//	printf("hehe\n");
+//	goto again;//死循环
+//	return 0;
+//}
+
+
+//关机程序
+//程序运行起来时，就开始倒计时60秒关机,但是如果你能输入：我是猪，就取消关机
+//shutdown -s 关机
+//shutdown -s -t 设置关机时间（秒）
+//shutdown -a 取消关机
+//system -- 库函数，可以执行系统命令，需要的头文件是stdlib.h
+//两个字符串比较相等的时候不能使用等号，应该使用strcmp，需要的头文件是string.h
+//int main()
+//{
+//
+//	char input[20] = { 0 };
+//	system("shutdown -s -t 60");
+//again:
+//	printf("请注意，你的电脑在一分钟内关机，如果如输入：我是猪，就取消关机\n");
+//	scanf("%s", input);
+//	if (strcmp(input, "我是猪") == 0)
+//	{
+//		system("shutdown -a");
+//	}
+//	else {
+//		goto again;
+//	}
+//	return 0;
+//}
+
+
+//int main()
+//{
+//
+//	char input[20] = { 0 };
+//	system("shutdown -s -t 60");
+//	while (1)
+//	{
+//		printf("请注意，你的电脑在一分钟内关机，如果如输入：我是猪，就取消关机\n");
+//		scanf("%s", input);
+//		if (strcmp(input, "我是猪") == 0)
+//		{
+//			system("shutdown -a");
+//			break;
+//		}
+//	}
 //	return 0;
 //}
