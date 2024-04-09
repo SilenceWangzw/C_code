@@ -203,3 +203,237 @@
 //	printf("%d %d %d", a, b, c);
 //	return 0;
 //}
+
+
+//15.下面代码执行的结果是什么
+//int main() {
+//	int x = 3;
+//	int y = 3;
+//	switch (x % 2) {
+//	case 1:
+//		switch (y)
+//		{
+//		case 0:
+//			printf("first");
+//		case 1:
+//			printf("second");
+//			break;
+//		default: printf("hello");
+//		}
+//	case 2:
+//		printf("third");
+//	}
+//	return 0;
+//}
+
+
+//16.下面程序的输出结果是什么
+//int main()
+//{
+//	int a = 0, b = 0;
+//	for (a = 1, b = 1; a <= 100; a++)
+//	{
+//		if (b >= 20) break;
+//		if (b % 3 == 1)
+//		{
+//			b = b + 3;
+//			continue;
+//		}
+//		b = b - 5;
+//	}
+//	printf("%d\n", a);
+//	return 0;
+//}
+
+
+//17.求十个整数中的最大值
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int max = arr[0];
+//	for (int i = 0; i < 10; i++)
+//	{
+//		if (arr[0] < arr[i])
+//		{
+//			max = arr[i];
+//		}
+//	}
+//	printf("最大值为：%d", max);
+//	return 0;
+//}
+
+
+//18.计算1/1-1/2+1/3-1/4+1/5 …… + 1/99 - 1/100 的值，打印出结果
+//int main()
+//{
+//	int i = 0;
+//	double sum = 0.0;
+//	int flag = 1;//1表示正号
+//	for (i = 1; i <= 100; i++)
+//	{
+//		sum = sum + (1.0 / i) * flag;
+//		flag = flag * -1;
+//	}
+//	printf("%lf\n", sum);
+//	return 0;
+//}
+
+
+//19.编写程序数一下 1到 100 的所有整数中出现多少个数字9
+//9 19 29 39 49 59 69 79 89 90 91 92 93 94 95 96 97 98 99 
+//int main()
+//{
+//	int i = 0;
+//	int count = 0;
+//	for (i = 1; i <= 100; i++)
+//	{
+//		if (i % 10 == 9)
+//		{
+//			count++;
+//		}
+//		if (i / 10 == 9)
+//		{
+//			count++;
+//		}
+//	}
+//	printf("%d\n", count);
+//	return 0;
+//}
+
+
+//20.打印1000年到2000年之间的闰年
+//int main()
+//{
+//	int i = 0;
+//	for (i = 1000; i <= 2000; i++)
+//	{
+//		if ((i % 4 == 0 && i % 100 != 0) || (i % 400 == 0))
+//		{
+//			printf("%d ", i);
+//		}
+//	}
+//	return 0;
+//}
+
+
+//21.给定两个数，求这两个数的最大公约数
+//int main()
+//{
+//	int num1 = 0;
+//	int num2 = 0;
+//	scanf("%d%d", &num1, &num2);
+//	int min = num1 > num2 ? num2 : num1;//保留更小的那个数
+//	while (min)
+//	{
+//		if (num1 % min == 0 && num2 % min == 0)
+//		{
+//			printf("%d\n", min);
+//			break;
+//		}
+//		min--;
+//	}
+//	return 0;
+//}
+
+
+//22.猜数字游戏
+//#include<stdlib.h>
+//void menu()
+//{
+//	printf("********************************\n");
+//	printf("********     1.play      *******\n");
+//	printf("********     0.exit      *******\n");
+//	printf("********************************\n");
+//}
+//void game()
+//{
+//	//1.生成随机数
+//	int ret = (rand() % 100) + 1;
+//	//2.猜数字
+//	int guess = 0;
+//	while (1)
+//	{
+//		printf("请输入数字:> ");
+//		scanf("%d", &guess);
+//		if (guess > ret)
+//		{
+//			printf("猜大了\n");
+//		}
+//		else if (guess < ret)
+//		{
+//			printf("猜小了\n");
+//		}
+//		else
+//		{
+//			printf("猜对了\n");
+//			break;
+//		}
+//	}
+//
+//}
+//int main()
+//{
+//	srand((unsigned int)time(NULL));
+//	int input = 0;
+//	do {
+//		menu();//打印菜单
+//
+//		printf("请输入:> ");
+//		scanf("%d", &input);
+//
+//		switch (input)
+//		{
+//		case 1:
+//			game();
+//			break;
+//		case 0:
+//			printf("退出游戏\n");
+//			break
+//		default:
+//			printf("输入错误，请重新输入\n");
+//		}
+//	} while (input);
+//	return 0;
+//}
+
+
+//23.在屏幕上输出9*9乘法口诀表
+//int main()
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 1; i <= 9; i++)
+//	{
+//		for (j = 1; j <= i; j++)
+//		{
+//			printf("%d * %d = %-4d", j, i, j * i);
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+
+
+//24.写一个代码：打印100~200之间的素数
+//int main()
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 100; i <= 200; i++)
+//	{
+//		int flag = 1;//假设是素数
+//		for (j = 2; j < i; j++)
+//		{
+//			if (i % j == 0)
+//			{
+//				flag = 0;
+//				break;
+//			}
+//		}
+//		if (flag == 1)
+//		{
+//			printf("%d ", i);
+//		}
+//	}
+//	return 0;
+//}
