@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
+#include<string.h>
 
 //一、数组的概念
 //为了能够存放多个相同类型的数值，就有了数组
@@ -133,5 +134,198 @@
 //	{
 //		printf("%d ", arr[i]);
 //	}
+//	return 0;
+//}
+
+
+
+
+//六、二维数组的创建
+//一维数组是整型元素的数组，二维数组是一维数组的数组。
+//1.创建
+//int main()
+//{
+//	int arr[3][5];//三行五列的数组，每个元素是整型
+//	float score[5][30];
+//	return 0;
+//}
+
+
+
+
+//七、二维数组的初始化
+//int main()
+//{
+//	int data1[3][5] = { 1,2,3,4,5,6,7,8 };//不完全初始化
+//	int data2[3][5] = { 0 };
+//	int data3[3][5] = { 1,2,3,4,5, 2,3,4,5,6, 3,4,5,6,7 };
+//
+//	int data4[3][5] = { {1,2},{3,4},{5,6} };//按行初始化
+//
+//	int data5[][5] = { 1,2,3,4,5,6,7,8 };//二维数组在初始化时，可以省略行，但不能省略列
+//	return 0;
+//}
+
+
+
+
+//八、二维数组的使用
+//int main()
+//{
+//	int arr[3][5] = { 1,2,3,4,5, 2,3,4,5,6, 3,4,5,6,7 };
+//	printf("%d\n", arr[1][2]);
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int arr[3][5] = { 0 };
+//	//输入值
+//	for (int i = 0; i < 3; i++)
+//	{
+//		for (int j = 0; j < 5; j++)
+//		{
+//			scanf("%d", &arr[i][j]);
+//		}
+//	}
+//	//输入
+//	for (int i = 0; i < 3; i++)
+//	{
+//		for (int j = 0; j < 5; j++)
+//		{
+//			printf("%d ", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+
+
+
+
+//九、二维数组在内存中的存储
+//二维数组在内存中也是连续存放的
+//int main()
+//{
+//	int arr[3][5] = { 0 };
+//	for (int i = 0; i < 3; i++)
+//	{
+//		for (int j = 0; j < 5; j++)
+//		{
+//			printf("&arr[%d][%d] = %p\n", i, j, &arr[i][j]);
+//		}
+//	}
+//	return 0;
+//}
+
+
+//按列打印
+//int main()
+//{
+//	int arr[3][5] = { 1,2,3,4,5,2,3,4,5,6,3,4,5,6,7 };
+//	//1 2 3 4 5
+//	//2 3 4 5 6
+//	//3 4 5 6 7
+//	for (int i = 0; i < 5; i++)
+//	{
+//		for (int j = 0; j < 3; j++)
+//		{
+//			printf("%d ", arr[j][i]);
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+
+
+
+
+//十、C99中的变长数组
+//在C语言的C99标准之前，数组在创建的时候，数组大小的指定只能使用常量
+//int main()
+//{
+//	int n = 10;
+//	int arr[n];//err
+//	return 0;
+//}
+//在C99之后，C语言中引入了变长数组的概念，使得数组的大小可以使用变量来指定
+//但是VS2022不支持变长数组
+//变长数组是不能初始化的
+
+
+
+
+//十一、数组练习
+//1.多个字符从两端移动，向中间汇聚
+//#include<Windows.h>
+//int main()
+//{
+//	char arr1[] = "hello bit!!!!!!!!!";
+//	char arr2[] = "##################";
+//	int sz = strlen(arr1);
+//	int left = 0;
+//	int right = sz - 1;
+//
+//	while (left <= right)
+//	{
+//		arr2[left] = arr1[left];
+//		arr2[right] = arr1[right];
+//		printf("%s\n", arr2);
+//		Sleep(1000);//休眠1000毫秒
+//		system("cls");//清理控制台屏幕的信息
+//		left++;
+//		right--;
+//	}
+//	printf("%s\n", arr2);
+//	return 0;
+//}
+
+
+//2.二分查找
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int k = 7;//要找的数字
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int flag = 1;//假设找不到
+//	
+//	int left = 0;
+//	int right = sz - 1;
+//	int mid = 0;
+//
+//	while (left <= right)
+//	{
+//		mid = left + (right - left) / 2;
+//		if (arr[mid] > k)
+//		{
+//			right = mid - 1;
+//		}
+//		else if (arr[mid] < k)
+//		{
+//			left = mid + 1;
+//		}
+//		else
+//		{
+//			printf("找到了，下标为%d\n", mid);
+//			flag = 1;
+//			break;
+//		}
+//	}
+//	if (flag == 0)
+//	{
+//		printf("找不到\n");
+//	}
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int a = 2147483646;
+//	int b = 2147483646;
+//	//int avg = (a + b) / 2;
+//	int avg = a + (b - a) / 2;
+//	printf("%d\n", avg);
 //	return 0;
 //}
