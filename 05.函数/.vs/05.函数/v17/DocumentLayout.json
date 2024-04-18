@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{7436520F-A01C-4529-9B27-5B9F7ECBBD5F}|05.\u51FD\u6570\\05.\u51FD\u6570.vcxproj|D:\\Github_Code\\C_code\\05.\u51FD\u6570\\05.\u51FD\u6570\\test.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7436520F-A01C-4529-9B27-5B9F7ECBBD5F}|05.\u51FD\u6570\\05.\u51FD\u6570.vcxproj|solutionrelative:05.\u51FD\u6570\\test.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7436520F-A01C-4529-9B27-5B9F7ECBBD5F}|05.\u51FD\u6570\\05.\u51FD\u6570.vcxproj|D:\\Github_Code\\C_code\\05.\u51FD\u6570\\05.\u51FD\u6570\\add.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7436520F-A01C-4529-9B27-5B9F7ECBBD5F}|05.\u51FD\u6570\\05.\u51FD\u6570.vcxproj|solutionrelative:05.\u51FD\u6570\\add.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "add.c",
+              "DocumentMoniker": "D:\\Github_Code\\C_code\\05.\u51FD\u6570\\05.\u51FD\u6570\\add.c",
+              "RelativeDocumentMoniker": "05.\u51FD\u6570\\add.c",
+              "ToolTip": "D:\\Github_Code\\C_code\\05.\u51FD\u6570\\05.\u51FD\u6570\\add.c",
+              "RelativeToolTip": "05.\u51FD\u6570\\add.c",
+              "ViewState": "AQIAAAYAAAAAAAAAAADwvw8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-04-18T11:18:18.693Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +41,7 @@
               "RelativeDocumentMoniker": "05.\u51FD\u6570\\test.c",
               "ToolTip": "D:\\Github_Code\\C_code\\05.\u51FD\u6570\\05.\u51FD\u6570\\test.c",
               "RelativeToolTip": "05.\u51FD\u6570\\test.c",
-              "ViewState": "AQIAAGwAAAAAAAAAAAAAAD0BAAAEAAAA",
+              "ViewState": "AQIAAGYBAAAAAAAAAAAYwGgBAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-04-14T11:41:05.404Z",
               "EditorCaption": ""

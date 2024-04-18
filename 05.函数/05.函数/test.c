@@ -320,3 +320,51 @@
 //
 //	return 0;
 //}
+
+
+//static和extern
+//static修饰局部变量
+//void test()
+//{
+//	static int a = 1;//其实编译器在编译代码的时候，就为静态变量分配了地址，而不是进入函数创建
+//	a++;
+//	printf("%d ", a);
+//}
+//int main()
+//{
+//	int i = 0;
+//	for (i = 0; i < 5; i++)
+//	{
+//		test();
+//	}
+//	return 0;
+//}
+
+
+//static修饰全局变量
+//全局变量默认是带有外部链接属性
+//static修饰全局变量时，改变了全局变量的链接属性
+//使得外部链接属性变成了内部的链接属性
+//extern int g_val;
+//int main()
+//{
+//	printf("%d\n", g_val);
+//	return 0;
+//}
+
+
+
+
+//static修饰函数
+//函数也是具有外部链接属性，只要在其他的.c文件中正确的声明也是可以直接使用的
+//static修饰函数，让函数的外部链接属性变成内部链接属性，使得函数只能在自己所在的.c文件中使用其他.c文件中无法使用
+//extern int Add(int, int);
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	scanf("%d%d", &a, &b);
+//	int c = Add(a, b);
+//	printf("c = %d\n", c);
+//	return 0;
+//}
