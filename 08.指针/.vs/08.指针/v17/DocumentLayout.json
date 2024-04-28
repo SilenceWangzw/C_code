@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Github_Code\\C_code\\08.\u6307\u9488\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C2630A02-ED13-448C-9148-3E25F3F2E83A}|08.\u6307\u9488\\08.\u6307\u9488.vcxproj|D:\\Github_Code\\C_code\\08.\u6307\u9488\\08.\u6307\u9488\\test.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C2630A02-ED13-448C-9148-3E25F3F2E83A}|08.\u6307\u9488\\08.\u6307\u9488.vcxproj|solutionrelative:08.\u6307\u9488\\test.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 189,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "test.c",
+              "DocumentMoniker": "D:\\Github_Code\\C_code\\08.\u6307\u9488\\08.\u6307\u9488\\test.c",
+              "RelativeDocumentMoniker": "08.\u6307\u9488\\test.c",
+              "ToolTip": "D:\\Github_Code\\C_code\\08.\u6307\u9488\\08.\u6307\u9488\\test.c",
+              "RelativeToolTip": "08.\u6307\u9488\\test.c",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAqwHIAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-04-28T10:40:43.718Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

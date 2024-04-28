@@ -1,0 +1,3 @@
+﻿  test.c
+D:\Github_Code\C_code\08.指针\08.指针\test.c(91,8): warning C4133: “初始化”: 从“int *”到“char *”的类型不兼容
+  08.指针.vcxproj -> D:\Github_Code\C_code\08.指针\Debug\08.指针.exe
