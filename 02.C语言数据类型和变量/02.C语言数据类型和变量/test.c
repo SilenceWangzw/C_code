@@ -8,7 +8,7 @@
 //C语言把类型分为两类
 //1.内置类型（C语言本身就具有的）：字符型、整型、浮点型、布尔类型
 //2.自定义类型（自己创造的）：数组、结构体、枚举、联合体
- 
+
 
 //布尔类型 -- 用来表示真假
 //使用布尔类型要引用头文件stdbool.h
@@ -79,7 +79,7 @@
 //	signed int num1 = 100;
 //	num1 = -200;
 //
-//	//unsigned int -- 无符号的int
+//	//unsigned int --- 无符号的int
 //	unsigned int num2 = 100;
 //	num2 = 1000;
 //	return 0;
@@ -167,7 +167,7 @@
 
 //int main()
 //{
-//	printf("%d\n", 33 - 42);//  + 称为操作符，33和42称为操作数，分别为左操作数和右操作数，所以 + 也是双目操作符
+//	printf("%d\n", 33 - 42);
 //	int a = 10;
 //	int b = 20;
 //	printf("%d\n", a - b);
@@ -335,7 +335,7 @@
 //}
 
 
-// %s -- 代表的是一个字符串
+//%s -- 代表的是一个字符串
 //int main()
 //{
 //	printf("%s will come tonight\n", "lisi");
@@ -354,7 +354,7 @@
 //printf()参数与占位符是一一对应的
 
 
-// %c -- 打印字符
+//%c -- 打印字符
 //int main()
 //{
 //	printf("this is %c\n", 'A');
@@ -364,10 +364,9 @@
 
 //int main()
 //{
-//	printf("%hd\n", 100); //%hd -- 十进制短整型
-//	printf("%ho\n", 100); //%ho -- 八进制短整型
-//	printf("%x\n", 15); //%x -- 十六进制
-//	return 0;
+//	printf("%hd\n", 100);//%hd -- 十进制短整型
+//	printf("%ho\n", 100);//%ho -- 八进制短整型
+//	printf("%x\n", 15);//%x -- 十六进制
 //}
 
 
@@ -375,7 +374,7 @@
 //int main()
 //{
 //	printf("%d\n", 123);
-//	printf("%5d\n", 123);// %5d -- 最少输出5位，不够则补空格。默认向右对齐
+//	printf("%5d\n", 123);//%5d -- 最少输出5位，不够则补空格，默认向右对齐
 //	printf("%5d\n", 123456);//指的是最小宽度，超过就直接打印
 //	printf("%-5d\n", 123);//左对齐
 //	return 0;
@@ -535,9 +534,7 @@
 //	int month = 0;
 //	int day = 0;
 //	scanf("%d-%d-%d", &year, &month, &day);
-//
 //	printf("%d %d %d\n", year, month, day);
-//
 //	return 0;
 //}
 
@@ -548,8 +545,6 @@
 //	int month = 0;
 //	int day = 0;
 //	scanf("%d%*c%d%*c%d", &year, &month, &day);
-//
 //	printf("%d %d %d\n", year, month, day);
-//
 //	return 0;
 //}

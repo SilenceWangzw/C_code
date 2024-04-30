@@ -12,11 +12,10 @@
 
 
 
-//二、main函数（主函数）
+//二、main函数(主函数)
 //1.概念：
-//每个C语言不管有多少行代码，都是从main函数开始执行的，main函数是程序的入口
-//main函数前面的int表示函数执行结束的时候会返回一个整型类型的值
-//所以在最后写return 0; 正好前后呼应
+//每个C语言代码不管有多少行代码，都是从main函数开始执行的，main函数是程序的入口
+//main函数前面的int表示函数执行结束的时候会返回一个整型类型的值，所以在最后写return 0; 正好前后呼应
 
 
 //2.main函数的多种写法
@@ -53,8 +52,8 @@
 //{
 //	printf("%d\n", 100);//%d -- 打印整数
 //	printf("%c\n", 'q');//%c -- 打印字符，单引号括起来的叫字符
-//	printf("%f\n", 3.14);//%f -- 打印小数 -- 默认小数点后会打印6位
-//	printf("%s\n", "Hello World");//%s -- 打印字符串
+//	printf("%f\n", 3.14);//%f -- 打印小数，默认小数点后打印6位
+//	printf("%s\n", "Hello World");//%s -- 打印字符串，双引号括起来的叫字符串
 //	return 0;
 //}
 
@@ -71,7 +70,7 @@
 //}
 
 
-//将ASCII吗对应的所有字符打印在屏幕上
+//将ASCII码对应的所有字符打印在屏幕上
 //int main()
 //{
 //	int i = 0;
@@ -109,7 +108,7 @@
 
 //int main()
 //{
-//	char arr1[] = { 'a','b','c' ,'\0' };
+//	char arr1[] = { 'a','b','c','\0' };
 //	char arr2[] = "abc";
 //	printf("%s\n", arr1);
 //	printf("%s\n", arr2);
@@ -126,7 +125,6 @@
 //	char arr2[] = { 'a','b','c','d','e','f' };
 //	printf("%zd\n", strlen(arr1));//6
 //	printf("%zd\n", strlen(arr2));//随机值
-//
 //	return 0;
 //}
 
@@ -137,7 +135,7 @@
 //转义字符顾名思义：就是转变原来意思的字符
 //int main()
 //{
-//	printf("abc\ndef"); //  \n -- 换行
+//	printf("abc\ndef");//  \n -- 换行
 //	return 0;
 //}
 
@@ -166,16 +164,7 @@
 
 //int main()
 //{
-//	printf("%s\n", "abc");
-//	printf("%s\n", "a");
-//	printf("%s\n", "\"");
-//	return 0;
-//}
-
-
-//int main()
-//{
-//	printf("c:\test\bit");
+//	printf("c:test\bit");
 //	printf("\n");
 //	printf("c:\\test\\bit");
 //	return 0;
@@ -184,31 +173,24 @@
 
 //int main()
 //{
-//	printf("abcdbef\n");
-//	printf("abcd\bef\n"); // \b -- 光标回退一个字符，但不删除字符
+//	printf("abcbdef\n");
+//	printf("abc\bdef\n"); //  \b -- 光标回退一个字符，但不删除字符
 //	return 0;
 //}
 
 
 //int main()
 //{
-//	printf("abcdef\r"); //  \r --- 光标移动到同一行的开头
+//	printf("a\tbc\tdef");// \t -- 按照8个字符对齐，如果不够8个字符，就用空格补齐
 //	return 0;
 //}
 
 
+// \ddd --- d d d表示1~3个八进制的数字
 //int main()
 //{
-//	printf("a\tbc\tdef"); // \t -- 按照8个字符对齐，如果不够8个字符，就用空格补齐
-//	return 0;
-//}
-
-
-// \ddd -- d d d表示1~3个八进制的数字
-//int main()
-//{
-//	printf("%c\n", '\130'); //八进制130 --> 十进制88 --> 88对应的ASCII码为X
-//	printf("%c\n", '\77');//八进制77 --> 十进制63 --> 63对应的ACSII码为？
+//	printf("%c\n", '\130');//八进制130 --> 十进制88 --> 88对应的ASCII码为X
+//	printf("%c\n", '\77');//八进制77-- > 十进制63-- > 63对应的ACSII码为？
 //	return 0;
 //}
 
@@ -222,7 +204,6 @@
 
 
 //练习题
-//#include<string.h>
 //int main()
 //{
 //	printf("%zd\n", strlen("c:\test\bit\114\test.c")); //16
