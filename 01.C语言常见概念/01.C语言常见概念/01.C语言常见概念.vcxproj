@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{f2614215-dc17-4371-a468-f95c965595cf}</ProjectGuid>
+    <ProjectGuid>{8db495a6-f701-4cac-a960-aaeefa8a3c26}</ProjectGuid>
     <RootNamespace>My01C语言常见概念</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

@@ -222,22 +222,22 @@
 //	return count;
 //}
 //Ğ´·¨3
-int count_bit_one(int n)
-{
-	int count = 0;
-	int i = 0;
-	while (n)
-	{
-		n = n & (n - 1);
-		count++;
-	}
-	return count;
-}
-int main()
-{
-	int num = 0;
-	scanf("%d", &num);
-	int ret = count_bit_one(num);
-	printf("%d\n", ret);
-	return 0;
-}
+//int count_bit_one(int n)
+//{
+//	int count = 0;
+//	int i = 0;
+//	while (n)
+//	{
+//		n = n & (n - 1);
+//		count++;
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	int num = 0;
+//	scanf("%d", &num);
+//	int ret = count_bit_one(num);
+//	printf("%d\n", ret);
+//	return 0;
+//}
