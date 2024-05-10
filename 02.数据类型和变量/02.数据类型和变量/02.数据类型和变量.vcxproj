@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{b9a34e48-16b8-4674-a06d-3018800c03d3}</ProjectGuid>
-    <RootNamespace>My02C语言数据类型和变量</RootNamespace>
+    <ProjectGuid>{af8edb82-c526-4e46-99cb-0a1bdc151ad0}</ProjectGuid>
+    <RootNamespace>My02数据类型和变量</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
