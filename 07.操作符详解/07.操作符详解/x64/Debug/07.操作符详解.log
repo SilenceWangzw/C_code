@@ -1,3 +1,2 @@
 ﻿  test.c
-D:\Github_Code\C_code\07.操作符详解\07.操作符详解\test.c(333,22): warning C4305: “初始化”: 从“double”到“float”截断
   07.操作符详解.vcxproj -> D:\Github_Code\C_code\07.操作符详解\x64\Debug\07.操作符详解.exe
