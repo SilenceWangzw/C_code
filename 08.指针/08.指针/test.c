@@ -127,22 +127,21 @@
 
 //三、const修饰指针
 //1.const修饰变量
-//const修饰变量的时候叫常变量
+//const修饰变量的时候，叫常变量，这个被修饰的变量本质上还是变量，只是不能被修改
 //int main()
 //{
-//	const int num = 100;//加了const，具有常属性
+//	const int num = 100;
 //	num = 200;//err
 //	printf("%d\n", num);
 //	return 0;
 //}
 
 
-//这个被修饰的变量本质上还是变量，只是不能被修改
 //int main()
 //{
 //	const int n = 10;
-//	//C99之前不支持变长数组，数组大小是需要常量、常量表达式来指定的，不能是变量
-//	int arr[n];//err
+//	//C99之前不支持变长数组，数组的大小是需要常量或者常量表达式来指定的，不能是变量
+//	int arr[n] = { 0 };//err，说明n本质上还是变量
 //	return 0;
 //}
 
@@ -150,13 +149,213 @@
 //int main()
 //{
 //	const int n = 10;
-//
 //	int* p = &n;
-//	*p = 20;
-//	printf("%d\n", n);//还是被改了
+//	*p = 20;//还是被修改了
+//	printf("%d\n", n);
 //	return 0;
 //}
 
 
 //2.const修饰指针变量
-//const修饰指针变量，可以放在*左边，也可以放在*的右边，意义是不一样的
+//一般来讲const修饰指针变量，可以放在*的左边，也可以放在*的右边，意义是不一样的
+//int main()
+//{
+//	int n = 10;
+//	int m = 100;
+//
+//	int* p = &n;
+//	*p = 20;//ok
+//
+//	p = &m;//ok
+//
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int n = 10;
+//	int m = 100;
+//
+//	int const* p = &n;//const修饰指针变量，放在 * 左边限制的是*p（限制的是指针指向的内容，不能通过指针变量来修改）
+//	*p = 20;//err
+//
+//	//但是指针变量本身是可以改变的
+//	p = &m;//ok
+//
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int n = 10;
+//	int m = 100;
+//
+//	int* const p = &n;//const放在 * 右边，限制的是指针变量本身，指针不能改变它的指向
+//	//但是可以通过指针变量修改它所指向的内容
+//	*p = 20;//ok
+//
+//	p = &m;//err
+//
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int n = 10;
+//	int m = 100;
+//
+//	int const* const p = &n;//两边都有const，则都限制了
+//	*p = 20;//err
+//
+//	p = &m;//err
+//
+//	return 0;
+//}
+
+
+
+
+//四、指针运算
+//1.指针+-整数
+//指针类型决定了指针+1的步长，决定了指针解引用的权限
+//数组在内存中是连续存放的
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int* p = &arr[0];
+//	for (int i = 0; i < 10; i++)
+//	{
+//		printf("%d ", *p);
+//		p++;
+//	}
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int* p = &arr[sz - 1];
+//	for (int i = sz - 1; i >= 0; i--)
+//	{
+//		printf("%d ", *p);
+//		p--;
+//	}
+//	return 0;
+//}
+
+
+//2.指针-指针
+//指针-指针的绝对值是指针和指针直接元素的个数
+//计算的前提条件是两个指针指向的是同一块空间
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	printf("%d\n", &arr[9] - &arr[0]);
+//	return 0;
+//}
+
+
+//练习：写一个函数求字符串的长度
+//写法1
+//size_t my_strlen(char *p)
+//{
+//	int count = 0;
+//	while (*p != '\0')
+//	{
+//		count++;
+//		p++;
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	char ch[] = "abcdef";
+//	size_t len = my_strlen(ch);
+//	printf("%zd\n", len);
+//	return 0;
+//}
+
+
+//写法2
+//size_t my_strlen(char* p)
+//{
+//	char* start = p;
+//	char* end = p;
+//	while (*end != '\0')
+//	{
+//		end++;
+//	}
+//	return end - start;
+//}
+//int main()
+//{
+//	char ch[] = "abcdef";
+//	size_t len = my_strlen(ch);
+//	printf("%zd\n", len);
+//	return 0;
+//}
+//指针+指针？ --> 没意义
+
+
+//3.指针的关系运算
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int* p = &arr[0];
+//	while (p < &arr[sz])
+//	{
+//		printf("%d ", *p);
+//		p++;
+//	}
+//	return 0;
+//}
+
+
+
+
+//五、野指针
+//野指针就是指针指向的位置是不可知的（随机的、不正确的，没有明确的限制）
+//1.野指针的成因
+//①指针未初始化
+//int main()
+//{
+//	//一个局部变量不初始化，它的值是随机的
+//	int* p;//p是局部变量，但是没有初始化，其值是随机的，如果将p中的值当作地址，解引用操作就会非法访问
+//	*p = 20;//err
+//	return 0;
+//}
+
+
+//②指针越界访问
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int i = 0;
+//	int* p = &arr[0];
+//	for (i = 0; i <= 10; i++)
+//	{
+//		*p = i;
+//		p++;
+//	}
+//	return 0;
+//}
+
+
+//③指针指向的空间释放
+//int* test()
+//{
+//	int n = 100;
+//	return &n; 
+//}
+//int main()
+//{
+//	int* p = test();
+//	printf("%d\n", *p);
+//	return 0;
+//}
