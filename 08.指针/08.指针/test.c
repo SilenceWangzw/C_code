@@ -359,3 +359,118 @@
 //	printf("%d\n", *p);
 //	return 0;
 //}
+
+
+//2.如何避免野指针
+//①指针初始化
+//如果明确知道指针指向哪里就直接赋值地址，如果不知道指针应该指向哪里，可以给指针赋值NULL
+//int main()
+//{
+//	int a = 10;
+//	int* p1 = &a;//给一个明确的地址
+//
+//	int* p2 = NULL;//没有明确的地址
+//	*p2 = 100;//err
+//
+//	return 0;
+//}
+
+
+//②小心指针越界
+//一个程序向内存申请了哪些空间，通过指针也就只能访问哪些空间，不能超出范围访问，超出了就是越界访问
+
+
+//③指针变量不再使用时，及时置NULL，指针使用之前检查有效性
+//int main()
+//{
+//	int* p = NULL;
+//	if (p != NULL)
+//	{
+//		*p = 200;
+//	}
+//
+//	return 0;
+//}
+
+
+//④避免返回局部变量的地址
+
+
+
+
+//六、assert断言
+//aeeset.h头文件定义了宏assert()，用于在运行时确保程序符合指定条件，如果不符合，就报错终止运行，这个宏常常被称为“断言”
+//#include<assert.h>
+//int main()
+//{
+//	int* p = NULL;
+//	assert(p != NULL);
+//
+//	return 0;
+//}
+
+
+
+
+//七、指针的使用和传址调用
+//1.strlen的模拟实现
+//求字符串长度，参数p指向的字符串不期望被修改
+//#include<assert.h>
+//size_t my_strlen(char const* p)
+//{
+//	size_t count = 0;
+//	assert(p != NULL);//检测指针p是否有效
+//
+//	while (*p != '\0')
+//	{
+//		count++;
+//		p++;
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	char ch[] = "abcdef";
+//	size_t len = my_strlen(ch);
+//	printf("%zd\n", len);
+//	return 0;
+//}
+
+
+//2.传值调用和传址调用
+//例：写一个函数交换两个整型变量的值
+//当实参传递给形参的时候，形参时实参的一份临时拷贝，对形参的修改不影响实参
+//void Swap1(int x, int y)
+//{
+//	int tmp = x;
+//	x = y;
+//	y = tmp;
+//}
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	scanf("%d%d", &a, &b);
+//	printf("交换前a=%d,b=%d\n", a, b);
+//	Swap1(a, b);//传值调用
+//	printf("交换后a=%d,b=%d\n", a, b);
+//	return 0;
+//}
+
+
+//void Swap2(int* x, int* y)
+//{
+//	int tmp = *x;
+//	*x = *y;
+//	*y = tmp;
+//}
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	scanf("%d%d", &a, &b);
+//	printf("交换前a=%d,b=%d\n", a, b);
+//	Swap2(&a, &b);//传址调用
+//	printf("交换后a=%d,b=%d\n", a, b);
+//	return 0;
+//}
