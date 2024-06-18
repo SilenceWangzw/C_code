@@ -589,9 +589,197 @@
 
 
 //4.冒泡排序
+//void input(int *p, int sz)
+//{
+//	for (int i = 0; i < sz; i++)
+//	{
+//		scanf("%d", p + i);
+//	}
+//}
+//void bubble_sort(int* arr, int sz)
+//{
+//	//总共进行n-1趟冒泡排序
+//	for (int i = 0; i < sz - 1; i++)
+//	{
+//		int flag = 1;//假设已经满足顺序
+//		//每一趟内部的比较
+//		for (int j = 0; j < sz - 1 - i; j++)//每次少比较一个元素
+//		{
+//			if (arr[j] > arr[j + 1])
+//			{
+//				flag = 0;//还不是有序的
+//				int tmp = arr[j];
+//				arr[j] = arr[j + 1];
+//				arr[j + 1] = tmp;
+//			}
+//		}
+//		if (flag == 1)
+//		{
+//			break;
+//		}
+//	}
+//}
+//void print(int* arr, int sz)
+//{
+//	for (int i = 0; i < sz; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//}
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	
+//	//输入值
+//	input(arr, sz);
+//
+//	//排序
+//	bubble_sort(arr, sz);//冒泡排序
+//
+//	//打印
+//	print(arr, sz);
+//
+//	return 0;
+//}
+
 
 //5.二级指针
+//二级指针是用来存放一级指针变量的地址
+//int main()
+//{
+//	int a = 10;
+//
+//	int* pa = &a;//pa是一级指针变量
+//
+//	int** ppa = &pa;//ppa就是二级指针变量
+//	//int** 说明ppa是指针变量，指向的pa的类型是int*类型
+//
+//
+//	printf("%d\n", **ppa);
+//	return 0;
+//}
+//二级指针和二维数组没有对应关系
+
 
 //6.指针数组
+//存放指针的数组，数组的每个元素其实是指针类型
+//int main()
+//{
+//	char arr[10];//字符数组 -- 存放字符的数组
+//	int arr[5];//整型数组 -- 存放整型的数组
+//
+//	char* arr[5];//指针数组 -- 存放字符指针的数组
+//	int* arr[6];//存放整型指针的数组
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	int c = 30;
+//
+//	//int* pa = &a;
+//	//int* pb = &b;
+//	//int* pc = &c;
+//
+//	int* arr[3] = { &a,&b,&c };
+//
+//	for (int i = 0; i < 3; i++)
+//	{
+//		printf("%d ", *(arr[i]));
+//	}
+//	return 0;
+//}
+
 
 //7.指针数组模拟二维数组
+//int main()
+//{
+//	int arr1[5] = { 1,2,3,4,5 };
+//	int arr2[5] = { 2,3,4,5,6 };
+//	int arr3[5] = { 3,4,5,6,7 };
+//
+//	int* parr[3] = { arr1,arr2,arr3 };
+//
+//	for (int i = 0; i < 3; i++)
+//	{
+//		for (int j = 0; j < 5; j++)
+//		{
+//			printf("%d ", *(parr[i] + j));//  <==>  *(*(parr+i)+j)
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+
+
+//8.字符指针变量
+//int main()
+//{
+//	char ch = 'w';
+//	char* pc = &ch;
+//	*pc = 'b';
+//	printf("%c\n", *pc);
+//
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	char const* p = "abcdef";//这里的赋值是将字符串中首字符的地址赋值给p
+//	printf("%c\n", *p);
+//	printf("%s\n", p);//使用%s打印字符串的时候，只需要提供首字符的地址就行
+//
+//	//*p = 'q';//err，常量字符串不能被修改
+//
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	char str1[] = "hello bit";
+//	char str2[] = "hello bit";
+//	const char* str3 = "hello bit";
+//	const char* str4 = "hello bit";
+//
+//	if (str1 == str2)//两个不同的数组
+//		printf("str1 and str2 are same\n");
+//	else
+//		printf("str1 and str2 are not same\n");
+//	
+//	if (str3 == str4)//内容相同的常量字符串只需要保存一份
+//		printf("str3 and str4 are same\n");
+//	else
+//		printf("str3 and str4 are not same\n");
+//	return 0;
+//}
+
+
+//9.数组指针变量
+//字符指针 -- 指向字符的指针，存放字符的地址
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5 };
+//	int(*p)[10] = &arr;//p就是数组指针，p中存放的是数组的地址
+//	//int(*)[10] = int(*)[10]
+//
+//	//arr -- int*			arr+1跳过4个字节
+//	//&arr[0] -- int*		&arr[0]+1跳过4个字节
+//	//&arr -- int(*)[10]	&arr+1跳过40个字节
+//
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	char* ch[5];
+//
+//	char* (*pc)[5] = &ch;
+//	return 0;
+//}
