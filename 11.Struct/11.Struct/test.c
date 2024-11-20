@@ -160,3 +160,171 @@
 //函数传参的时候，参数是需要压栈，会有时间和空间上的系统开销
 //如果传递一个结构体对象时，结构体过大，参数压栈的系统开销较大，所以会导致性能下降
 //尽量使用传址调用，避免空间和时间的浪费
+
+
+
+
+//五、枚举
+//枚举顾名思义就是一一列举，就是把可能的取值一一列举
+//例如：星期、性别、月份
+//enum Sex
+//{
+//	//该枚举类型的三种可能取值
+//	//他们都是常量，被称为枚举常量
+//	MALE,
+//	FEMALE,
+//	SECRET
+//};
+//int main()
+//{
+//	enum Sex sex1 = MALE;
+//	enum Sex sex2 = FEMALE;
+//
+//	//枚举常量默认值从0开始，依次递增1
+//	printf("%d\n", MALE);
+//	printf("%d\n", FEMALE);
+//	printf("%d\n", SECRET);
+//	return 0;
+//}
+
+
+//写一个计算器，完成整数的加减乘除
+//enum Option
+//{
+//	EXIT,//0
+//	ADD,//1
+//	SUB,//2
+//	MUL,//3
+//	DIV//4
+//};
+//void menu()
+//{
+//	printf("*******************************\n");
+//	printf("******** 1.add    2.sub  ******\n");
+//	printf("******** 3.mul    4.div  ******\n");
+//	printf("******** 0.exit          ******\n");
+//	printf("*******************************\n");
+//}
+//int main()
+//{
+//	int input = 0;
+//	do {
+//
+//		menu();
+//		printf("请选择:> ");
+//		scanf("%d", &input);
+//		switch (input)
+//		{
+//		case ADD://加法
+//			break;
+//		case SUB:
+//			break;
+//		case MUL:
+//			break;
+//		case DIV:
+//			break;
+//		case EXIT:
+//			printf("退出\n");
+//			break;
+//		default:
+//			printf("选择错误，重新选择\n");
+//			break;
+//		}
+//	} while (input);
+//	return 0;
+//}
+
+
+
+
+//六、联合体
+//像结构体一样，联合体也是由一个或多个成员构成，这些成员可以是不同类型
+//但是编译器只为最大的成员分配足够的内存空间
+//联合体的特点是所有成员共用一块内存空间，所以联合体也叫共用体
+//struct S
+//{
+//	char c;
+//	int i;
+//};
+//union Un
+//{
+//	char c;
+//	int i;
+//};
+//int main()
+//{
+//	printf("%zd\n", sizeof(struct S));
+//	printf("%zd\n", sizeof(union Un));
+//	return 0;
+//}
+
+
+//union Un
+//{
+//	char c;
+//	int i;
+//};
+//int main()
+//{
+//	union Un un = { 0 };
+//	printf("%zd\n", sizeof(un));
+//	printf("%p\n", &un);
+//	printf("%p\n", &(un.c));
+//	printf("%p\n", &(un.i));
+//	return 0;
+//}
+
+
+//联合体大小的计算
+//联合体的大小至少是最大成员的大小
+//当最大成员大小不是最大对齐数的整数倍的时候，就要对齐到最大对齐数的整数倍
+//union Un
+//{
+//	short arr[7];//数组按照元素类型计算对齐数
+//	int i;
+//};
+//int main()
+//{
+//	printf("%zd\n", sizeof(union Un));
+//	return 0;
+//}
+
+
+//例：写一个程序，判断当前机器是大端还是小端
+//写法1：
+//int main()
+//{
+//	int a = 1;
+//	//0x 00 00 00 01
+//	if (*(char*)&a == 1)
+//	{
+//		printf("小端\n");
+//	}
+//	else
+//	{
+//		printf("大端\n");
+//	}
+//	return 0;
+//}
+
+
+//写法2：
+union Un
+{
+	char c;
+	int i;
+};
+int main()
+{
+	union Un un = { 0 };
+	un.i = 1;
+	if (un.c = 1)
+	{
+		printf("小端\n");
+	}
+	else
+	{
+		printf("大端\n");
+	}
+	return 0;
+}
