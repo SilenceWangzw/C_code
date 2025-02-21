@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{c6cfd214-33ab-485b-a937-970f124af7ab}</ProjectGuid>
+    <ProjectGuid>{847c017e-b51f-48dd-9e99-64d24203cb52}</ProjectGuid>
     <RootNamespace>My04array</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
